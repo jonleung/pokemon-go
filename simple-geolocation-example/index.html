@@ -5,7 +5,9 @@
   </head>
   <body>
     <script type="text/javascript">
+
       if (navigator.geolocation) {
+        // ^ is only true if the user's brower has geolocation
         navigator.geolocation.getCurrentPosition(function(position) {
           var latitude = position.coords.latitude;
           var longitude = position.coords.longitude;
@@ -20,6 +22,7 @@
       else {
         alert("Your browser does not support geolocation : /");
       }
+
     </script>
   </body>
 </html>
