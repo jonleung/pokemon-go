@@ -8,8 +8,9 @@ function preload() {
   var baseUrl = "http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCSHUj37EscbQKeCSY4oyM1tCiIgRhEOTE"
   var sizeParam = "&size=600x600";
   var centerParam = "&center=" + encodedAddress;
+  var zoomParam = "&zoom=18";
 
-  var fullUrl = baseUrl + sizeParam + centerParam;
+  var fullUrl = baseUrl + sizeParam + centerParam + zoomParam;
   console.log(fullUrl);
   mapImage = loadImage(fullUrl);
 }
