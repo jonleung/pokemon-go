@@ -24,13 +24,43 @@ Get a dynamically generated and hosted image of a map area from a URL.
   [Live](http://cdn.rawgit.com/jonleung/pokemon-go/672fa1d7a79d04e3cb5e3def83b1679b6e584409/v2-google-static-maps-p5/index.html) |
   [JS Bin](#TODO)
 
+### Obtaining a Google Maps API Key
+
+In the step after this one, we will be loading the image from within p5.js. In
+order for this CORS request to not be blocked by Google, we need to authenticate
+using an API key.
+
+Since this process takes about ~5 minutes to complete, you may use my API key
+temporarily (_Warning: the provided key may not work because only 25,000 map
+loads may be made per day with this key and you will need to create your own. If
+you are a teacher, to save time I would recommend creating your own key and
+sharing that one key with all the students in your class_):
+
+```
+AIzaSyCSHUj37EscbQKeCSY4oyM1tCiIgRhEOTE
+```
+
+1. Go to https://developers.google.com/maps/documentation/static-maps/
+2. Click "Get a Key" and follow the directions to create a new key.
+3. For now, you can use ""
+3. When you're asked "Accept requests from these HTTP referrers", leave it blank
+
+### Adding Your Google Maps API Key To Your Query
+
+Just add the parameter `&key=YOUR_API_KEY` to
+your query, like so:
+
+```
+http://maps.googleapis.com/maps/api/staticmap?center=New+York+City&size=300x150&key=AIzaSyCSHUj37EscbQKeCSY4oyM1tCiIgRhEOTE
+```
+
 ### Displaying the image in p5.js
 
 ```js
 var mapImage;
 
 function preload() {
-  mapImage = loadImage("http://maps.googleapis.com/maps/api/staticmap?center=New+York+City&size=300x150")
+  mapImage = loadImage("http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCSHUj37EscbQKeCSY4oyM1tCiIgRhEOTE&center=New+York+City&size=300x150")
 }
 
 function setup() {
@@ -93,12 +123,3 @@ feature:
 ## License
 
 [MIT](LICENSE)
-
-
--------------------------------------------------------------------------------
-
-#### Obtaining a Google Maps API Key
-
-1. Go to https://developers.google.com/maps/documentation/static-maps/
-2. Click "Get a Key" and follow the directions
-3. When you're asked "Accept requests from these HTTP referrers", leave it blank
