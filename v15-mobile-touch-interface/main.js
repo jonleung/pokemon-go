@@ -137,6 +137,5 @@ function draw() {
     player.changeAnimation(playerDirection + "-stop");
   }
 
-
   drawSprites();
 }
