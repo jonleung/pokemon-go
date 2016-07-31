@@ -1,10 +1,4 @@
-var KEY_W = 87;
-var KEY_A = 65;
-var KEY_S = 83;
-var KEY_D = 68;
-
 var player;
-var backgroundMapImage;
 
 function preload() {
   if (navigator.geolocation) {
@@ -44,48 +38,18 @@ function onCurrentPositionGotten(position) {
 }
 
 function onLoadedImage(img) {
-  backgroundMapImage = img;
+  image(img, 0, 0);
 }
 
 function setup() {
   createCanvas(600, 600);
   text("loading...", 0, 20);
-
-  player = createSprite(width/2, height/2);
-  
-  player.addAnimation("down-walk", "imgs/1a.png", "imgs/1b.png", "imgs/1c.png", "imgs/1d.png");
-  player.addAnimation("right-walk", "imgs/2a.png", "imgs/2b.png", "imgs/2c.png", "imgs/2d.png");
-  player.addAnimation("up-walk", "imgs/3a.png", "imgs/3b.png", "imgs/3c.png", "imgs/3d.png");
-  player.addAnimation("left-walk", "imgs/4a.png", "imgs/4b.png", "imgs/4c.png", "imgs/4d.png");
-  player.addAnimation("stop", "imgs/1a.png");
 }
 
 function draw() {
-  clear();
-  if(backgroundMapImage !== undefined) {
-    image(backgroundMapImage, 0, 0);
-  }
-
-  if (keyDown("w")) {
-    player.position.y -= 3;
-    player.changeAnimation("up-walk");
-  }
-  if (keyDown("a")) {
-    player.position.x -= 3;
-    player.changeAnimation("left-walk");
-  }
-  if (keyDown("s")) {
-    player.position.y += 3;
-    player.changeAnimation("down-walk");
-  }
-  if (keyDown("d")) {
-    player.position.x += 3;
-    player.changeAnimation("right-walk");
-  }
-
-  if (keyDown("w") === false && keyDown("a") === false && keyDown("s") === false && keyDown("d") === false) {
-    player.changeAnimation("stop");w
-  }
+  player = createSprite(width/2, height/2);
+  playerImage = loadImage("imgs/1a.png")
+  player.addImage(playerImage);
 
   drawSprites();
 }
