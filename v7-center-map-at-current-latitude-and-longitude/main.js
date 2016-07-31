@@ -1,4 +1,11 @@
+// It will be helpful for the students to use the Chrome debugger to step
+// through the code line by line.
+
+// I've left in `debugger` statements inside each function that can be commented
+// out.
+
 function preload() {
+  // debugger
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(onCurrentPositionGotten);
   }
@@ -8,6 +15,7 @@ function preload() {
 };
 
 function onCurrentPositionGotten(position) {
+  // debugger
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
 
@@ -23,11 +31,13 @@ function onCurrentPositionGotten(position) {
 }
 
 function onLoadedImage(img) {
+  // debugger
   image(img, 0, 0);
 }
 
 
 function setup() {
+  // debugger
   createCanvas(600, 600);
   text("loading...", 0, 20);
 }
