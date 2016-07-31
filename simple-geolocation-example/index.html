@@ -1,28 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Geolocation Example</title>
+    <title>traditional geolocation</title>
   </head>
   <body>
-    <script type="text/javascript">
-
-      if (navigator.geolocation) {
-        // ^ is only true if the user's brower has geolocation
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var latitude = position.coords.latitude;
-          var longitude = position.coords.longitude;
-
-          var msg = "You are located at\n" +
-                    "Latitude: " + latitude + "\n" +
-                    "Longitude: " + longitude;
-
-          alert(msg);
-        });
-      }
-      else {
-        alert("Your browser does not support geolocation : /");
-      }
-
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
