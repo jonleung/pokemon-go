@@ -118,49 +118,22 @@ feature:
 > [![](http://maps.googleapis.com/maps/api/staticmap?center=Union+Square+NYC&size=300x150&zoom=16&markers=icon:http://i.imgur.com/3Jk4mkU.png%7Cshadow:true%7C5th+avenue+and+E+14th+Street)
 ](http://maps.googleapis.com/maps/api/staticmap?center=Union+Square+NYC&size=300x150&zoom=16&markers=icon:http://i.imgur.com/3Jk4mkU.png%7Cshadow:true%7C5th+avenue+and+E+14th+Street)
 
-## Geolocation
+## Remainder of Tutorial
 
-Challenge them to see if they can use google to figure out how to do this first.
+For the remainder of this tutorial, checkout `v0-base-template` all the way
+through `v19-mvp-of-battles`.
 
-### Independent Geolocation
+I try my best to walk through a clear step of progressions as to try to
+explain to the teachers how the code is constructed.
 
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Geolocation Example</title>
-  </head>
-  <body>
-    <script type="text/javascript">
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var latitude = position.coords.latitude;
-          var longitude = position.coords.longitude;
+Note that towards the very end, the code gets pretty sloppy.
 
-          var msg = "You are located at\n" +
-                    "Latitude: " + latitude + "\n" +
-                    "Longitude: " + longitude;
+**Important**: Also, please see my notes in the top of the `main.js` files in each folder.
 
-          alert(msg);
-        });
-      }
-      else {
-        alert("Your browser does not support geolocation : /");
-      }
-    </script>
-  </body>
-</html>
-```
+Also make sure to checkout the:
 
-### Setting the Map Center By Latitude and Logitude
-
-Challenge the students to look in the documentation to see if they can figure out
-how to do this. If they need a hint, tell them to look for the section titled
-"Location Parameters"
-
-
-
-
+- simple-geolocation-example
+- airtable-example
 
 ## License
 
