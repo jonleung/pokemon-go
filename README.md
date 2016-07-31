@@ -120,6 +120,48 @@ feature:
 
 ## Geolocation
 
+Challenge them to see if they can use google to figure out how to do this first.
+
+### Independent Geolocation
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation Example</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var latitude = position.coords.latitude;
+          var longitude = position.coords.longitude;
+
+          var msg = "You are located at\n" +
+                    "Latitude: " + latitude + "\n" +
+                    "Longitude: " + longitude;
+
+          alert(msg);
+        });
+      }
+      else {
+        alert("Your browser does not support geolocation : /");
+      }
+    </script>
+  </body>
+</html>
+```
+
+### Setting the Map Center By Latitude and Logitude
+
+Challenge the students to look in the documentation to see if they can figure out
+how to do this. If they need a hint, tell them to look for the section titled
+"Location Parameters"
+
+
+
+
+
 ## License
 
 [MIT](LICENSE)

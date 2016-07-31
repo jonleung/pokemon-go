@@ -43,8 +43,6 @@ COLORS_DICTIONARY = {
   "78909C": 18
 }
 
-var pokemonArray = [];
-
 function onCurrentPositionGotten(position) {
   latitude = 40.753660;  // position.coords.latitude;
   longitude = -73.983290 // position.coords.longitude;
@@ -62,15 +60,10 @@ function onCurrentPositionGotten(position) {
       view: "Main View"
     }).eachPage(function page(records, fetchNextPage) {
         records.forEach(function(record, i) {
-          var pokemonObject = {
-            location: record.get("Location"),
-            name: record.get("Name"),
-            imageUrl: record.get("Image Url")
-          }
-          pokemonArray.push(pokemonObject);
-
-          var encodedLocation = encodeURIComponent(pokemonObject.location);
+          var location = record.get("Location");
+          var encodedLocation = encodeURIComponent(location);
           var placeholderImageUrl = "http://dummyimage.com/15/" + COLORS_ARRAY[i];
+          console.log(i);
           var markersParam = "&markers=icon:" + placeholderImageUrl + "%7Cshadow:true%7C" + encodedLocation;
 
           fullUrl += markersParam;
@@ -87,46 +80,4 @@ function onCurrentPositionGotten(position) {
 
 function onBackgroundMapImageLoaded(img) {
   backgroundMapImage = img;
-
-  backgroundMapImage.loadPixels();
-  findCoordinatesOfColorPlaceholders();
-  drawPokemonSprites();
-}
-
-/*
-
-A note that backgroundMapImage.pixels is a 1d array of ALL pixels where
-el 0 = the the amount of red in the 1st pixel
-el 1 = the the amount of green in the 1st pixel
-el 2 = the the amount of green in the 1st pixel
-el 3 = the the amount of transparency in the 1st pixel
-el 4 = the the amount of red in the 2nd pixel
-
-*/
-function findCoordinatesOfColorPlaceholders() {
-  var i = 0;
-
-  for(var y=0; y<height; y++) {
-    for(var x=0; x<width; x++) {
-      var r = backgroundMapImage.pixels[i*4 + 0]
-      var g = backgroundMapImage.pixels[i*4 + 1]
-      var b = backgroundMapImage.pixels[i*4 + 2]
-
-      var hex = rgbToHex(r, g, b);
-
-      var colorIndex = COLORS_DICTIONARY[hex];
-      if (colorIndex !== undefined) {
-        var pokemonObject = pokemonArray[colorIndex];
-        if (pokemonObject.x === undefined) {
-          pokemonObject.x = x;
-          pokemonObject.y = y;
-          var sprite = createSprite(pokemonObject.x, pokemonObject.y);
-          pokemonObject.sprite = sprite;
-          sprite.addImage(loadImage("imgs/pokemon/"+pokemonObject.name+".png"));
-        }
-      }
-
-      i++;
-    }
-  }
 }
