@@ -45,17 +45,17 @@ function onCurrentPositionGotten(position) {
   var centerParam = "&center=" + latitude + "," + longitude;
   var zoomParam = "&zoom=17";
 
-  var pokemonImages = ["http://i.imgur.com/4CNJyMd.png", "http://i.imgur.com/JAJeqZS.png", "http://i.imgur.com/Fe0smJE.png"]
-  var addresses = ["40th street and Avenue of Americas", "40th street and 5th Avenue", "42nd street and 5th Avenue"]
-
   var fullUrl = baseUrl + sizeParam + centerParam + zoomParam;
 
-  for (var i=0; i<pokemonImages.length; i++) {
-    var pokemonImage = pokemonImages[i];
-    var address = addresses[i];
+  var pokemonImagesArray = ["http://i.imgur.com/4CNJyMd.png", "http://i.imgur.com/JAJeqZS.png", "http://i.imgur.com/Fe0smJE.png"]
+  var addressArray = ["40th street and Avenue of Americas", "40th street and 5th Avenue", "42nd street and 5th Avenue"]
+
+  for (var i=0; i<pokemonImagesArray.length; i++) {
+    var pokemonImageUrl = pokemonImagesArray[i];
+    var address = addressArray[i];
     var encodedAddress = encodeURIComponent(address);
 
-    var markersParam = "&markers=icon:" + pokemonImage + "%7Cshadow:true%7C" + encodedAddress;
+    var markersParam = "&markers=icon:" + pokemonImageUrl + "%7Cshadow:true%7C" + encodedAddress;
 
     fullUrl = fullUrl + markersParam;
   }
