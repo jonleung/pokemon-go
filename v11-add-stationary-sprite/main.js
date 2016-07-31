@@ -1,3 +1,5 @@
+var player;
+
 function preload() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(onCurrentPositionGotten);
@@ -39,8 +41,15 @@ function onLoadedImage(img) {
   image(img, 0, 0);
 }
 
-
 function setup() {
   createCanvas(600, 600);
   text("loading...", 0, 20);
+}
+
+function draw() {
+  player = createSprite(width/2, height/2);
+  playerImage = loadImage("imgs/1a.png")
+  player.addImage(playerImage);
+
+  drawSprites();
 }
